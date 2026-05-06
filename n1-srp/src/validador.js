@@ -1,6 +1,12 @@
-export function validadorUsuario(usuario) {
-  if (!usuario.email.includes('@')) return false;
-  if (usuario.password.length < 8) return false;
-  if (usuario.age < 18) return false;
-  return true;
+export function EmailValidator(user) {
+  return user.email.includes('@');
+}
+
+export function PasswordValidator(user) {
+  return user.password.length >= 8;
+}
+
+/* Vai retornar TRUE se tudo for TRUE e vice-versa :) */
+export function UserValidator(user) {
+  return (EmailValidator(user) && PasswordValidator(user) && user.age >= 18);
 }
